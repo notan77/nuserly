@@ -1,0 +1,20 @@
+/* Barra superior */
+#header {
+    background: #0f172a;
+}
+
+/* Títulos */
+#header h1 {
+    color: #38bdf8;
+}
+
+/* Botones principales */
+.button, input[type=submit] {
+    background-color: #2563eb;
+    border-radius: 8px;
+}
+
+/* Fondo general */
+body {
+    background: #020617;
+}

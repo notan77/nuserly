@@ -6,6 +6,14 @@ from .models import Paciente, NotaEnfermeria, Adjunto
 
 
 # ─────────────────────────────
+# Branding del Admin (GLOBAL)
+# ─────────────────────────────
+admin.site.site_header = "Nuserly System 1.0"
+admin.site.site_title = "Nuserly Admin"
+admin.site.index_title = "Panel de Administración"
+
+
+# ─────────────────────────────
 # Inline de adjuntos (dentro de la nota)
 # ─────────────────────────────
 class AdjuntoInline(admin.TabularInline):
@@ -24,18 +32,23 @@ class NotaEnfermeriaAdmin(admin.ModelAdmin):
 
     def imprimir(self, obj):
         url = reverse('imprimir_nota', args=[obj.id])
-        return format_html('<a href="{}" target="_blank">🖨️ Imprimir</a>', url)
-
+        return format_html(
+            '<a href="{}" target="_blank">🖨️ Imprimir</a>',
+            url
+        )
     imprimir.short_description = "Imprimir"
 
+    # No permitir editar una nota ya creada
     def has_change_permission(self, request, obj=None):
         if obj:
             return False
         return super().has_change_permission(request, obj)
 
+    # No permitir borrar notas
     def has_delete_permission(self, request, obj=None):
         return False
 
+    # Asignar automáticamente el autor
     def save_model(self, request, obj, form, change):
         if not obj.pk:
             obj.autor = request.user
@@ -60,4 +73,3 @@ class PacienteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'documento')
     search_fields = ('nombre', 'documento')
     inlines = [NotaEnfermeriaInline]
-

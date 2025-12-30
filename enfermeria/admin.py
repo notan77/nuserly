@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-# Admin global del proyecto
-# Los modelos se registran en sus apps correspondientes
-
+admin.site.site_header = "Nuserly System 1.0"
+admin.site.site_title = "Nuserly Admin"
+admin.site.index_title = "Panel de administración"
