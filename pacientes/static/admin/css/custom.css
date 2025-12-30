@@ -1,16 +1,18 @@
-/* Barra superior */
+/* Cambiar título del admin */
+#site-name a {
+    content: "Nuserly System 1.0";
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* Header */
 #header {
     background: #0f172a;
 }
 
-/* Títulos */
-#header h1 {
-    color: #38bdf8;
-}
-
-/* Botones principales */
-.button, input[type=submit] {
-    background-color: #2563eb;
+/* Botones */
+.button, input[type=submit], input[type=button] {
+    background: #2563eb !important;
     border-radius: 8px;
 }
 
