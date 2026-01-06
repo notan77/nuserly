@@ -1,7 +1,18 @@
 from django.urls import path
-from .views import home, imprimir_nota
+from .views import crear_nota, imprimir_nota, home
 
 urlpatterns = [
     path("", home, name="home"),
-    path("nota/<int:nota_id>/imprimir/", imprimir_nota, name="imprimir_nota"),
+
+    path(
+        "paciente/<int:paciente_id>/nueva-nota/",
+        crear_nota,
+        name="crear_nota"
+    ),
+
+    path(
+        "nota/<int:nota_id>/imprimir/",
+        imprimir_nota,
+        name="imprimir_nota"
+    ),
 ]
