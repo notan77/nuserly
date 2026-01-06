@@ -29,9 +29,12 @@ class NotaEnfermeria(models.Model):
     )
 
     autor = models.ForeignKey(
-        User,
-        on_delete=models.PROTECT
-    )
+    User,
+    on_delete=models.PROTECT,
+    null=True,
+    blank=True
+)
+
 
     fecha = models.DateTimeField(auto_now_add=True)
 
