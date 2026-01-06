@@ -7,7 +7,11 @@
 <body>
 
 <h2>Nueva nota de enfermería</h2>
-<p><strong>Paciente:</strong> {{ paciente.nombre }}</p>
+
+<p>
+    <strong>Paciente:</strong>
+    {{ paciente.nombres }} {{ paciente.apellidos }}
+</p>
 
 <form method="post">
     {% csrf_token %}

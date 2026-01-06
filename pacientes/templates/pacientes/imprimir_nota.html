@@ -8,35 +8,65 @@
             font-family: Arial, sans-serif;
             margin: 40px;
         }
-        h1 {
+        h1, h2 {
             text-align: center;
         }
-        .campo {
-            margin-bottom: 15px;
+        .bloque {
+            margin-bottom: 20px;
         }
-        .label {
+        .etiqueta {
             font-weight: bold;
+        }
+        .firma {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #555;
         }
     </style>
 </head>
-<body onload="window.print()">
+<body>
 
-    <h1>Nota de Enfermería</h1>
+<h1>Nuserly</h1>
+<h2>Nota de Enfermería</h2>
 
-    <div class="campo">
-        <span class="label">Paciente:</span>
-        {{ nota.paciente }}
-    </div>
+<div class="bloque">
+    <p>
+        <span class="etiqueta">Paciente:</span>
+        {{ nota.paciente.nombres }} {{ nota.paciente.apellidos }}
+    </p>
+    <p>
+        <span class="etiqueta">Documento:</span>
+        {{ nota.paciente.documento }}
+    </p>
+</div>
 
-    <div class="campo">
-        <span class="label">Fecha:</span>
+<div class="bloque">
+    <p>
+        <span class="etiqueta">Fecha y hora:</span>
         {{ nota.fecha }}
-    </div>
+    </p>
+</div>
 
-    <div class="campo">
-        <span class="label">Contenido:</span>
-        <p>{{ nota.contenido }}</p>
-    </div>
+<div class="bloque">
+    <p class="etiqueta">Diagnóstico:</p>
+    <p>{{ nota.diagnostico }}</p>
+</div>
+
+<div class="bloque">
+    <p class="etiqueta">Procedimientos:</p>
+    <p>{{ nota.procedimientos }}</p>
+</div>
+
+<hr>
+
+<div class="firma">
+    <p>
+        Nota de Enfermería – <strong>Nuserly</strong><br>
+        Elaborada por:
+        {{ nota.autor.get_full_name|default:nota.autor.username }}<br>
+        Fecha de creación: {{ nota.fecha }}
+    </p>
+</div>
 
 </body>
 </html>
